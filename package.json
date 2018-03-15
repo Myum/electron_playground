@@ -1,11 +1,12 @@
 {
   "name": "readit",
-  "version": "1.0.0",
+  "version": "0.9.0",
   "description": "A minimal Electron application",
   "main": "main.js",
   "author": "Author",
   "homepage": "https://example.com",
   "scripts": {
+    "publish": "electron-builder build -m -p onTagOrDraft",
     "start": "electron .",
     "mac": "electron-builder -m",
     "win": "electron-builder -w",
@@ -19,17 +20,15 @@
       "buildResources": "."
     },
     "mac": {
-      "category": "public.app-category.productivity",
-      "target": "dmg"
-    }, 
-    "win": {
-
-    }, 
-    "linux": {
-      "category": "Network"
+      "publish": [
+        "github"
+      ],
+      "category": "public.app-category.productivity"
     }
   },
   "dependencies": {
+    "electron-log": "^2.2.14",
+    "electron-updater": "^2.21.0",
     "jquery": "^3.3.1",
     "query-string": "^6.0.0"
   },
