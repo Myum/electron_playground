@@ -5,9 +5,9 @@ const mainWindow = require('./mainWindow')
 const readItem = require('./readItem')
 const updater = require('./updater')
 
-const {autoUpdater} = require('electron-updater')
-autoUpdater.logger = require("electron-log")
-autoUpdater.logger.transports.file.level = "info"
+// const {autoUpdater} = require('electron-updater')
+// autoUpdater.logger = require("electron-log")
+// autoUpdater.logger.transports.file.level = "info"
 
 
 // LIsten for new read item
@@ -27,13 +27,13 @@ ipcMain.on('new-item', (e, itemURL) => {
 // Some APIs can only be used after this event occurs.
 app.on('ready', () => {
   console.log("Create window")
-  autoUpdater.logger.info("message from Main")
+  // autoUpdater.logger.info("message from Main")
   mainWindow.createWindow()
 
   setTimeout(() => {
     console.log("now should update")
     updater.check()
-  }, 3000)
+  }, 5000)
 })
 
 // Quit when all windows are closed.
